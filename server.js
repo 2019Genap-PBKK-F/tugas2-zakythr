@@ -1,5 +1,5 @@
 const express = require('express')
-const app = express()
+const app = express('10.199.14.46')
 const port = 8026
 
 app.get('/', (req, res) => res.send('Hello Zaky!'))
