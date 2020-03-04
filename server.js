@@ -1,13 +1,17 @@
-const http = require("http");
+var express = require('express');
+var app = express();
 const hostname = '10.199.14.46';
 const port = 8026;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Halo Halo\n');
-});
+var Controller = require('./controller')();
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.get("/",function(request, response)
+{
+    response.json({"Message":"Welcome"});
+});
+app.use("/api/mahasiswa", Controller);
+
+app.listen(port, function () {
+    var message = "Server runnning on Port: " + port;
+    console.log(message);
 });
