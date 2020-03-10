@@ -10,7 +10,7 @@ var routes = function()
         {
             conn.connect().then(function()
             {
-                var sqlQuery = "Select * from mahasiswa";
+                var sqlQuery = "Select * from siswa";
                 var req = new sql.Request(conn);
                 req.query(sqlQuery).then(function(recordset)
                 {
