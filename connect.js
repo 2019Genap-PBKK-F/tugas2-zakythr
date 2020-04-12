@@ -2,7 +2,7 @@ var sql = require("mssql");
 var connect = function()
 {
     var conn = new sql.ConnectionPool({
-        user: 'su',
+        user: 'sa',
         password: 'SaSa1212',
         server: '10.199.13.253',
         database: 'nrp05111740000140'
