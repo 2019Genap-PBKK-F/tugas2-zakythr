@@ -577,6 +577,434 @@ app.delete("/api/indikator-satuankerja/:id&:id2&:id3", function(req, res)
    executeQuery(res, query, model, 1)
 })
 
+///////////////////////\\\\\\\\\\\\\\\\\\\\
+///////////////////Data Desa\\\\\\\\\\\\\\\\\\ 
+
+//Select
+app.get("/api/datadesa/", function(req, res)
+{
+   var query = "select * from DataDesa"
+   executeQuery(res, query, null, 0)
+})
+
+//Insert
+app.post("/api/datadesa/", function(req, res)
+{
+   var model = [
+      { name: 'id', sqltype: sql.Int, value: req.body.id },
+      { name: 'nama', sqltype: sql.VarChar, value: req.body.nama },
+      { name: 'nik', sqltype: sql.VarChar, value: req.body.nik },
+      { name: 'no_kk', sqltype: sql.VarChar, value: req.body.no_kk },
+      { name: 'tgl_lahir', sqltype: sql.VarChar, value: req.body.tgl_lahir },
+      { name: 'setatus', sqltype: sql.VarChar, value: req.body.setatus },
+      { name: 'pendidikan', sqltype: sql.VarChar, value: req.body.pendidikan },
+      { name: 'pekerjaan', sqltype: sql.VarChar, value: req.body.pekerjaan },
+      { name: 'alamat', sqltype: sql.VarChar, value: req.body.alamat }
+   ]
+
+   var query = "insert into DataDesa ( nama, nik, no_kk, tgl_lahir, setatus, pendidikan, pekerjaan, alamat) values (@nama, @nik, @no_kk, @tgl_lahir, @setatus, @pendidikan, @pekerjaan, @alamat)"
+   executeQuery(res, query, model, 1)
+})
+
+//Update
+app.put("/api/datadesa/:id", function(req, res)
+{
+   var model = [
+      { name: 'id', sqltype: sql.Int, value: req.body.id },
+      { name: 'nama', sqltype: sql.VarChar, value: req.body.nama },
+      { name: 'nik', sqltype: sql.VarChar, value: req.body.nik },
+      { name: 'no_kk', sqltype: sql.VarChar, value: req.body.no_kk },
+      { name: 'tgl_lahir', sqltype: sql.VarChar, value: req.body.tgl_lahir },
+      { name: 'setatus', sqltype: sql.VarChar, value: req.body.setatus },
+      { name: 'pendidikan', sqltype: sql.VarChar, value: req.body.pendidikan },
+      { name: 'pekerjaan', sqltype: sql.VarChar, value: req.body.pekerjaan },
+      { name: 'alamat', sqltype: sql.VarChar, value: req.body.alamat }
+   ]
+
+   var query = "update DataDesa set nama = @nama, nik = @nik, no_kk = @no_kk, tgl_lahir = @tgl_lahir, setatus = @setatus, pendidikan = @pendidikan, pekerjaan = @pekerjaan, alamat = @alamat where id = @id" 
+   executeQuery(res, query, model, 1)
+})
+
+//Delete
+app.delete("/api/datadesa/:id", function(req, res)
+{
+   var model = [
+      { name: 'id', sqltype: sql.Numeric, value: req.params.id }
+   ]
+
+   var query = "delete from DataDesa where id = @id"
+   executeQuery(res, query, model, 1)
+})
+
+///////////////////////\\\\\\\\\\\\\\\\\\\\
+///////////////////Abmas\\\\\\\\\\\\\\\\\\ 
+
+//Select
+app.get("/api/abmas/", function(req, res)
+{
+   var query = "select * from abmas"
+   executeQuery(res, query, null, 0)
+})
+
+//Insert
+app.post("/api/abmas", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.body.id_nmr },
+      { name: 'nama_fak', sqltype: sql.VarChar, value: req.body.nama_fak },
+      { name: 'nama_dept', sqltype: sql.VarChar, value: req.body.nama_dept },
+      { name: 'penelitian_judul', sqltype: sql.VarChar, value: req.body.penelitian_judul },
+      { name: 'peneliti_nama', sqltype: sql.VarChar, value: req.body.peneliti_nama },
+      { name: 'skim_nama', sqltype: sql.VarChar, value: req.body.skim_nama },
+      { name: 'is_dosen', sqltype: sql.VarChar, value: req.body.is_dosen },
+      { name: 'tahun', sqltype: sql.VarChar, value: req.body.tahun },
+      { name: 'anggota_luar_nama', sqltype: sql.VarChar, value: req.body.anggota_luar_nama },
+      { name: 'mhs_nama', sqltype: sql.VarChar, value: req.body.mhs_nama },
+      { name: 'anggota_sbg', sqltype: sql.VarChar, value: req.body.anggota_sbg },
+      { name: 'bidang_pen_nama', sqltype: sql.VarChar, value: req.body.bidang_pen_nama },
+      { name: 'program_id', sqltype: sql.Int, value: req.body.program_id },
+      { name: 'nosk', sqltype: sql.VarChar, value: req.body.nosk },
+      { name: 'nip_pegawai', sqltype: sql.VarChar, value: req.body.nip_pegawai }
+   ]
+
+   var query = "insert into abmas ( nama_fak, nama_dept, penelitian_judul, peneliti_nama, skim_nama, is_dosen, tahun, anggota_luar_nama, mhs_nama, anggota_sbg, bidang_pen_nama, program_id, nosk, nip_pegawai) values (@nama_fak, @nama_dept, @penelitian_judul, @peneliti_nama, @skim_nama, @is_dosen, @tahun, @anggota_luar_nama, @mhs_nama, @anggota_sbg, @bidang_pen_nama, @program_id, @nosk, @nip_pegawai)"
+   executeQuery(res, query, model, 1)
+})
+
+//Update
+app.put("/api/abmas/:id_nmr", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.body.id_nmr },
+      { name: 'nama_fak', sqltype: sql.VarChar, value: req.body.nama_fak },
+      { name: 'nama_dept', sqltype: sql.VarChar, value: req.body.nama_dept },
+      { name: 'penelitian_judul', sqltype: sql.VarChar, value: req.body.penelitian_judul },
+      { name: 'peneliti_nama', sqltype: sql.VarChar, value: req.body.peneliti_nama },
+      { name: 'skim_nama', sqltype: sql.VarChar, value: req.body.skim_nama },
+      { name: 'is_dosen', sqltype: sql.VarChar, value: req.body.is_dosen },
+      { name: 'tahun', sqltype: sql.VarChar, value: req.body.tahun },
+      { name: 'anggota_luar_nama', sqltype: sql.VarChar, value: req.body.anggota_luar_nama },
+      { name: 'mhs_nama', sqltype: sql.VarChar, value: req.body.mhs_nama },
+      { name: 'anggota_sebagai', sqltype: sql.VarChar, value: req.body.anggota_sbg },
+      { name: 'bidang_pen_nama', sqltype: sql.VarChar, value: req.body.bidang_pen_nama },
+      { name: 'program_id', sqltype: sql.Int, value: req.body.program_id },
+      { name: 'nosk', sqltype: sql.VarChar, value: req.body.nosk },
+      { name: 'nip_pegawai', sqltype: sql.VarChar, value: req.body.nip_pegawai }
+   ]
+
+   var query = "update abmas set nama_fak = @nama_fak, nama_dept = @nama_dept, penelitian_judul = @penelitian_judul, peneliti_nama = @peneliti_nama, skim_nama = @skim_nama, is_dosen = @is_dosen, tahun = @tahun, anggota_luar_nama = @anggota_luar_nama, mhs_nama = @mhs_nama, anggota_sbg = @anggota_sbg, bidang_pen_nama = @bidang_pen_nama, program_id = @program_id, nosk = @nosk, nip_pegawai = @nip_pegawai where id_nmr = @id_nmr" 
+   executeQuery(res, query, model, 1)
+})
+
+//Delete
+app.delete("/api/abmas/:id_nmr", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.params.id_nmr }
+   ]
+
+   var query = "delete from abmas where id_nmr = @id_nmr"
+   executeQuery(res, query, model, 1)
+})
+
+///////////////////////\\\\\\\\\\\\\\\\\\\\
+///////////////////Dosen\\\\\\\\\\\\\\\\\\ 
+
+//Select
+app.get("/api/dosen/", function(req, res)
+{
+   var query = "select * from dosen"
+   executeQuery(res, query, null, 0)
+})
+
+//Insert
+app.post("/api/dosen", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.body.id_nmr },
+      { name: 'fakultas', sqltype: sql.VarChar, value: req.body.fakultas },
+      { name: 'departemen', sqltype: sql.VarChar, value: req.body.departemen },
+      { name: 'status_aktif', sqltype: sql.VarChar, value: req.body.status_aktif },
+      { name: 'nip_pegawai', sqltype: sql.VarChar, value: req.body.nip_pegawai },
+      { name: 'nama_vpegawai', sqltype: sql.VarChar, value: req.body.nama_vpegawai },
+      { name: 'nama_vakademik', sqltype: sql.VarChar, value: req.body.nama_vakademik },
+      { name: 'nama', sqltype: sql.VarChar, value: req.body.nama },
+      { name: 'golongan', sqltype: sql.VarChar, value: req.body.golongan },
+      { name: 'nama_pangkat', sqltype: sql.VarChar, value: req.body.nama_pangkat },
+      { name: 'nama_fungsional', sqltype: sql.VarChar, value: req.body.nama_fungsional },
+      { name: 'jenis_k', sqltype: sql.VarChar, value: req.body.jenis_k },
+      { name: 'agama', sqltype: sql.VarChar, value: req.body.agama },
+      { name: 'tgl_lahir', sqltype: sql.VarChar, value: req.body.tgl_lahir },
+      { name: 'pendidikan_tertinggi', sqltype: sql.VarChar, value: req.body.pendidikan_tertinggi },
+      { name: 'pendidikan_versi_kepegawaian', sqltype: sql.VarChar, value: req.body.pendidikan_versi_kepegawaian },
+      { name: 'status_ni', sqltype: sql.VarChar, value: req.body.status_ni },
+      { name: 'sinta_id', sqltype: sql.VarChar, value: req.body.sinta_id },
+      { name: 'scopus_id', sqltype: sql.VarChar, value: req.body.scopus_id },
+      { name: 'google_id', sqltype: sql.VarChar, value: req.body.google_id },
+      { name: 'sinta_score', sqltype: sql.VarChar, value: req.body.sinta_score },
+      { name: 'scopus_hindex', sqltype: sql.Int, value: req.body.scopus_hindex },
+      { name: 'scopus_citations', sqltype: sql.Int, value: req.body.scopus_citations },
+      { name: 'scopus_article', sqltype: sql.Int, value: req.body.scopus_article },
+      { name: 'google_hindex', sqltype: sql.Int, value: req.body.google_hindex },
+      { name: 'google_citations', sqltype: sql.Int, value: req.body.google_citations },
+      { name: 'google_article', sqltype: sql.Int, value: req.body.google_article },
+      { name: 'nidn', sqltype: sql.VarChar, value: req.body.nidn }
+   ]
+
+   var query = "insert into dosen ( fakultas, departemen, status_aktif, nip_pegawai, nama_vpegawai, nama_vakademik, nama, golongan, nama_pangkat, nama_fungsional, jenis_k, agama, tgl_lahir, pendidikan_tertinggi, pendidikan_versi_kepegawaian, status_ni, sinta_id, scopus_id, google_id, sinta_score, scopus_hindex, scopus_citations, scopus_article, google_hindex, google_citations, google_article, nidn)" 
+               + "values (@fakultas, @departemen, @status_aktif, @nip_pegawai, @nama_vpegawai, @nama_vakademik, @nama, @golongan, @nama_pangkat, @nama_fungsional, @jenis_k, agama, @tgl_lahir, @pendidikan_tertinggi, @pendidikan_versi_kepegawaian, @status_ni, @sinta_id, @scopus_id, @google_id, @sinta_score, @scopus_hindex, @scopus_citations, @scopus_article, @google_hindex, @google_citations, @google_article, @nidn)"
+   executeQuery(res, query, model, 1)
+})
+
+//Update
+app.put("/api/dosen/:id_nmr", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.body.id_nmr },
+      { name: 'fakultas', sqltype: sql.VarChar, value: req.body.fakultas },
+      { name: 'departemen', sqltype: sql.VarChar, value: req.body.departemen },
+      { name: 'status_aktif', sqltype: sql.VarChar, value: req.body.status_aktif },
+      { name: 'nip_pegawai', sqltype: sql.VarChar, value: req.body.nip_pegawai },
+      { name: 'nama_vpegawai', sqltype: sql.VarChar, value: req.body.nama_vpegawai },
+      { name: 'nama_vakademik', sqltype: sql.VarChar, value: req.body.nama_vakademik },
+      { name: 'nama', sqltype: sql.VarChar, value: req.body.nama },
+      { name: 'golongan', sqltype: sql.VarChar, value: req.body.golongan },
+      { name: 'nama_pangkat', sqltype: sql.VarChar, value: req.body.nama_pangkat },
+      { name: 'nama_fungsional', sqltype: sql.VarChar, value: req.body.nama_fungsional },
+      { name: 'jenis_k', sqltype: sql.VarChar, value: req.body.jenis_k },
+      { name: 'agama', sqltype: sql.VarChar, value: req.body.agama },
+      { name: 'tgl_lahir', sqltype: sql.VarChar, value: req.body.tgl_lahir },
+      { name: 'pendidikan_tertinggi', sqltype: sql.VarChar, value: req.body.pendidikan_tertinggi },
+      { name: 'pendidikan_versi_kepegawaian', sqltype: sql.VarChar, value: req.body.pendidikan_versi_kepegawaian },
+      { name: 'status_ni', sqltype: sql.VarChar, value: req.body.status_ni },
+      { name: 'sinta_id', sqltype: sql.VarChar, value: req.body.sinta_id },
+      { name: 'scopus_id', sqltype: sql.VarChar, value: req.body.scopus_id },
+      { name: 'google_id', sqltype: sql.VarChar, value: req.body.google_id },
+      { name: 'sinta_score', sqltype: sql.VarChar, value: req.body.sinta_score },
+      { name: 'scopus_hindex', sqltype: sql.Int, value: req.body.scopus_hindex },
+      { name: 'scopus_citations', sqltype: sql.Int, value: req.body.scopus_citations },
+      { name: 'scopus_article', sqltype: sql.Int, value: req.body.scopus_article },
+      { name: 'google_hindex', sqltype: sql.Int, value: req.body.google_hindex },
+      { name: 'google_citations', sqltype: sql.Int, value: req.body.google_citations },
+      { name: 'google_article', sqltype: sql.Int, value: req.body.google_article },
+      { name: 'nidn', sqltype: sql.VarChar, value: req.body.nidn }
+   ]
+
+   var query = "update dosen set fakultas = @fakultas, departemen = @departemen, status_aktif = @status_aktif, nip_pegawai = @nip_pegawai, nama_vpegawai = @nama_vpegawai, nama_vakademik = @nama_vakademik," 
+               + "nama = @nama, golongan = @golongan, nama_pangkat = @nama_pangkat, nama_fungsional = @nama_fungsional, jenis_k = @jenis_k, agama = @agama, tgl_lahir = @tgl_lahir, pendidikan_tertinggi = @pendidikan_tertinggi,"
+               + "pendidikan_versi_kepegawaian = @pendidikan_versi_kepegawaian, status_ni = @status_ni, sinta_id = @sinta_id, scopus_id = @scopus_id, google_id = @google_id, sinta_score = @sinta_score, scopus_hindex @scopus_hindex,"
+               + "scopus_citations = @scopus_citations, scopus_article = @scopus_article, google_hindex = @google_hindex, google_citations = @google_citations, google_article = @google_article, nidn = @nidn where id_nmr = @id_nmr" 
+   executeQuery(res, query, model, 1)
+})
+
+//Delete
+app.delete("/api/dosen/:id_nmr", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.params.id_nmr }
+   ]
+
+   var query = "delete from dosen where id_nmr = @id_nmr"
+   executeQuery(res, query, model, 1)
+})
+
+///////////////////////\\\\\\\\\\\\\\\\\\\\
+///////////////////Penelitian\\\\\\\\\\\\\\\\\\ 
+
+//Select
+app.get("/api/penelitian/", function(req, res)
+{
+   var query = "select * from penelitian"
+   executeQuery(res, query, null, 0)
+})
+
+//Insert
+app.post("/api/penelitian", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.body.id_nmr },
+      { name: 'id', sqltype: sql.Int, value: req.body.id },
+      { name: 'tahun', sqltype: sql.VarChar, value: req.body.tahun },
+      { name: 'id_dept', sqltype: sql.Int, value: req.body.id_dept },
+      { name: 'nama_dept', sqltype: sql.VarChar, value: req.body.nama_dept },
+      { name: 'id_fak', sqltype: sql.Int, value: req.body.id_fak },
+      { name: 'nama_fak', sqltype: sql.VarChar, value: req.body.nama_fak },
+      { name: 'penelitian_id', sqltype: sql.Int, value: req.body.penelitian_id },
+      { name: 'penelitian_judul', sqltype: sql.VarChar, value: req.body.penelitian_judul },
+      { name: 'peneliti_id', sqltype: sql.Int, value: req.body.peneliti_id },
+      { name: 'peneliti_nama', sqltype: sql.VarChar, value: req.body.peneliti_nama },
+      { name: 'anggota_sbg', sqltype: sql.VarChar, value: req.body.anggota_sbg },
+      { name: 'anggota_kon', sqltype: sql.VarChar, value: req.body.anggota_kon },
+      { name: 'anggota_id', sqltype: sql.Int, value: req.body.anggota_id },
+      { name: 'anggota_luar_nama', sqltype: sql.VarChar, value: req.body.anggota_luar_nama },
+      { name: 'mhs_nama', sqltype: sql.VarChar, value: req.body.mhs_nama },
+      { name: 'stapen_id', sqltype: sql.Int, value: req.body.stapen_id },
+      { name: 'stapen_nama', sqltype: sql.VarChar, value: req.body.stapen_nama },
+      { name: 'id_bidangpen', sqltype: sql.VarChar, value: req.body.id_bidangpen },
+      { name: 'bidang_pen_nama', sqltype: sql.VarChar, value: req.body.bidang_pen_nama },
+      { name: 'skim_nama', sqltype: sql.VarChar, value: req.body.skim_nama },
+      { name: 'skim_id', sqltype: sql.Int, value: req.body.skim_id },
+      { name: 'program_id', sqltype: sql.Int, value: req.body.program_id },
+      { name: 'program_nama', sqltype: sql.VarChar, value: req.body.program_nama },
+      { name: 'is_dosen', sqltype: sql.Int, value: req.body.is_dosen },
+      { name: 'PENELITIAN_NOMOR_SK_SELESAI', sqltype: sql.VarChar, value: req.body.PENELITIAN_NOMOR_SK_SELESAI },
+      { name: 'nip_pegawai', sqltype: sql.VarChar, value: req.body.nip_pegawai }
+   ]
+
+   var query = "insert into penelitian ( id, tahun, id_dept, nama_dept, id_fak, nama_fak, penelitian_id, penelitian_judul, peneliti_id,"
+                + "peneliti_nama, anggota_sbg, anggota_kon, anggota_id, anggota_luar_nama, mhs_nama, stapen_id, stapen_nama, id_bidangpen,"
+                + "bidang_pen_nama, skim_nama, program_id, program_nama, is_dosen, PENELITIAN_NOMOR_SK_SELESAI, nip_pegawai)" 
+                + "values (@id, @tahun, @id_dept, @nama_dept, @id_fak, @nama_fak, @penelitian_id, @penelitian_judul, @peneliti_id,"
+                + "@peneliti_nama, @anggota_sbg, @anggota_kon, @anggota_id, @anggota_luar_nama, @mhs_nama, @stapen_id, @stapen_nama, @id_bidangpen,"
+                + "@bidang_pen_nama, @skim_nama, @program_id, @program_nama, @is_dosen, @PENELITIAN_NOMOR_SK_SELESAI, @nip_pegawai)"
+   executeQuery(res, query, model, 1)
+})
+
+//Update
+app.put("/api/penelitian/:id_nmr", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.body.id_nmr },
+      { name: 'id', sqltype: sql.Int, value: req.body.id },
+      { name: 'tahun', sqltype: sql.VarChar, value: req.body.tahun },
+      { name: 'id_dept', sqltype: sql.Int, value: req.body.id_dept },
+      { name: 'nama_dept', sqltype: sql.VarChar, value: req.body.nama_dept },
+      { name: 'id_fak', sqltype: sql.Int, value: req.body.id_fak },
+      { name: 'nama_fak', sqltype: sql.VarChar, value: req.body.nama_fak },
+      { name: 'penelitian_id', sqltype: sql.Int, value: req.body.penelitian_id },
+      { name: 'penelitian_judul', sqltype: sql.VarChar, value: req.body.penelitian_judul },
+      { name: 'peneliti_id', sqltype: sql.Int, value: req.body.peneliti_id },
+      { name: 'peneliti_nama', sqltype: sql.VarChar, value: req.body.peneliti_nama },
+      { name: 'anggota_sbg', sqltype: sql.VarChar, value: req.body.anggota_sbg },
+      { name: 'anggota_kon', sqltype: sql.VarChar, value: req.body.anggota_kon },
+      { name: 'anggota_id', sqltype: sql.Int, value: req.body.anggota_id },
+      { name: 'anggota_luar_nama', sqltype: sql.VarChar, value: req.body.anggota_luar_nama },
+      { name: 'mhs_nama', sqltype: sql.VarChar, value: req.body.mhs_nama },
+      { name: 'stapen_id', sqltype: sql.Int, value: req.body.stapen_id },
+      { name: 'stapen_nama', sqltype: sql.VarChar, value: req.body.stapen_nama },
+      { name: 'id_bidangpen', sqltype: sql.VarChar, value: req.body.id_bidangpen },
+      { name: 'bidang_pen_nama', sqltype: sql.VarChar, value: req.body.bidang_pen_nama },
+      { name: 'skim_nama', sqltype: sql.VarChar, value: req.body.skim_nama },
+      { name: 'skim_id', sqltype: sql.Int, value: req.body.skim_id },
+      { name: 'program_id', sqltype: sql.Int, value: req.body.program_id },
+      { name: 'program_nama', sqltype: sql.VarChar, value: req.body.program_nama },
+      { name: 'is_dosen', sqltype: sql.Int, value: req.body.is_dosen },
+      { name: 'PENELITIAN_NOMOR_SK_SELESAI', sqltype: sql.VarChar, value: req.body.PENELITIAN_NOMOR_SK_SELESAI },
+      { name: 'nip_pegawai', sqltype: sql.VarChar, value: req.body.nip_pegawai }
+   ]
+
+   var query = "update penelitian set id = @id, tahun = @tahun, id_dept = @id_dept, nama_dept = @nama_dept, id_fak = @id_fak, nama_fak = @nama_fak, penelitian_id = @penelitian_id, penelitian_judul = @penelitian_judul, peneliti_id = @peneliti_id,"
+                + "peneliti_nama = @peneliti_nama, anggota_sbg = @anggota_sbg, anggota_kon = @anggota_kon, anggota_id = @anggota_id, anggota_luar_nama = @anggota_luar_nama, mhs_nama = @mhs_nama, stapen_id = @stapen_id, stapen_nama = @stapen_nama, id_bidangpen = id_bidangpen,"
+                + "bidang_pen_nama = @bidang_pen_nama, skim_nama = @skim_nama, program_id = @program_id, program_nama = @program_nama, is_dosen = @is_dosen, PENELITIAN_NOMOR_SK_SELESAI = @PENELITIAN_NOMOR_SK_SELESAI, nip_pegawai = @nip_pegawai where id_nmr = @id_nmr" 
+   executeQuery(res, query, model, 1)
+})
+
+//Delete
+app.delete("/api/penelitian/:id_nmr", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.params.id_nmr }
+   ]
+
+   var query = "delete from penelitian where id_nmr = @id_nmr"
+   executeQuery(res, query, model, 1)
+})
+
+///////////////////////\\\\\\\\\\\\\\\\\\\\
+///////////////////Publikasi\\\\\\\\\\\\\\\\\\ 
+
+//Select
+app.get("/api/publikasi/", function(req, res)
+{
+   var query = "select * from publikasi"
+   executeQuery(res, query, null, 0)
+})
+
+//Insert
+app.post("/api/publikasi", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.body.id_nmr },
+      { name: 'fulname', sqltype: sql.VarChar, value: req.body.fulname },
+      { name: 'nip_pegawai', sqltype: sql.VarChar, value: req.body.nip_pegawai },
+      { name: 'id', sqltype: sql.Int, value: req.body.id },
+      { name: 'nidn', sqltype: sql.VarChar, value: req.body.nidn },
+      { name: 'pengarang', sqltype: sql.VarChar, value: req.body.pengarang },
+      { name: 'tahun', sqltype: sql.VarChar, value: req.body.tahun },
+      { name: 'judul', sqltype: sql.VarChar, value: req.body.judul },
+      { name: 'region', sqltype: sql.VarChar, value: req.body.region },
+      { name: 'halaman', sqltype: sql.VarChar, value: req.body.halaman },
+      { name: 'volume', sqltype: sql.VarChar, value: req.body.volume },
+      { name: 'doi', sqltype: sql.VarChar, value: req.body.doi },
+      { name: 'issn', sqltype: sql.VarChar, value: req.body.issn },
+      { name: 'abtraksi', sqltype: sql.VarChar, value: req.body.abtraksi },
+      { name: 'kata_kunci', sqltype: sql.VarChar, value: req.body.kata_kunci },
+      { name: 'id_fak', sqltype: sql.VarChar, value: req.body.id_fak },
+      { name: 'id_jur', sqltype: sql.Int, value: req.body.id_jur },
+      { name: 'url_unduh', sqltype: sql.VarChar, value: req.body.url_unduh },
+      { name: 'url_scholar', sqltype: sql.VarChar, value: req.body.url_scholar },
+      { name: 'anggota_ket', sqltype: sql.VarChar, value: req.body.anggota_ket },
+      { name: 'keterangan', sqltype: sql.VarChar, value: req.body.keterangan },
+      { name: 'is_scopus', sqltype: sql.Int, value: req.body.is_scopus },
+      { name: 'is_gs', sqltype: sql.VarChar, value: req.body.is_gs },
+      { name: 'jenis', sqltype: sql.VarChar, value: req.body.jenis }
+   ]
+
+   var query = "insert into publikasi ( fulname, nip_pegawai, id, nidn, pengarang, tahun, judul, region, halaman,"
+                + "volume, doi, issn, abtraksi, kata_kunci, id_fak, id_jur, url_unduh, url_scholar, anggota_ket, keterangan, is_scopus, is_gs, jenis)" 
+                + "values (@fulname, @nip_pegawai, @id, @nidn, @pengarang, @tahun, @judul, @region, @halaman,"
+                + "@volume, @doi, @issn, @abtraksi, @kata_kunci, @id_fak, @id_jur, @url_unduh, @url_scholar, @anggota_ket, @keterangan, @is_scopus, @is_gs, @jenis)"
+   executeQuery(res, query, model, 1)
+})
+
+//Update
+app.put("/api/publikasi/:id_nmr", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.body.id_nmr },
+      { name: 'fulname', sqltype: sql.VarChar, value: req.body.fulname },
+      { name: 'nip_pegawai', sqltype: sql.VarChar, value: req.body.nip_pegawai },
+      { name: 'id', sqltype: sql.Int, value: req.body.id },
+      { name: 'nidn', sqltype: sql.VarChar, value: req.body.nidn },
+      { name: 'pengarang', sqltype: sql.VarChar, value: req.body.pengarang },
+      { name: 'tahun', sqltype: sql.VarChar, value: req.body.tahun },
+      { name: 'judul', sqltype: sql.VarChar, value: req.body.judul },
+      { name: 'region', sqltype: sql.VarChar, value: req.body.region },
+      { name: 'halaman', sqltype: sql.VarChar, value: req.body.halaman },
+      { name: 'volume', sqltype: sql.VarChar, value: req.body.volume },
+      { name: 'doi', sqltype: sql.VarChar, value: req.body.doi },
+      { name: 'issn', sqltype: sql.VarChar, value: req.body.issn },
+      { name: 'abtraksi', sqltype: sql.VarChar, value: req.body.abtraksi },
+      { name: 'kata_kunci', sqltype: sql.VarChar, value: req.body.kata_kunci },
+      { name: 'id_fak', sqltype: sql.VarChar, value: req.body.id_fak },
+      { name: 'id_jur', sqltype: sql.Int, value: req.body.id_jur },
+      { name: 'url_unduh', sqltype: sql.VarChar, value: req.body.url_unduh },
+      { name: 'url_scholar', sqltype: sql.VarChar, value: req.body.url_scholar },
+      { name: 'anggota_ket', sqltype: sql.VarChar, value: req.body.anggota_ket },
+      { name: 'keterangan', sqltype: sql.VarChar, value: req.body.keterangan },
+      { name: 'is_scopus', sqltype: sql.Int, value: req.body.is_scopus },
+      { name: 'is_gs', sqltype: sql.VarChar, value: req.body.is_gs },
+      { name: 'jenis', sqltype: sql.VarChar, value: req.body.jenis }
+   ]
+
+   var query = "update publikasi set fulname = @fulname, nip_pegawai = @nip_pegawai, id = @id, nidn = @nidn, pengarang = @pengarang,"
+               + "tahun = @tahun, judul = @judul, region = @region, halaman = @halaman, volume = @volume, doi = @doi, issn = @issn, abtraksi = @abtraksi, kata_kunci = @kata_kunci," 
+               + "id_fak = @id_fak, id_jur = @id_jur, url_unduh = @url_unduh, url_scholar = @url_scholar, anggota_ket = @anggota_ket, keterangan = @keterangan, is_scopus = @is_scopus,"
+               + "is_gs = @is_gs, jenis = @jenis where id_nmr = @id_nmr" 
+   executeQuery(res, query, model, 1)
+})
+
+//Delete
+app.delete("/api/publikasi/:id_nmr", function(req, res)
+{
+   var model = [
+      { name: 'id_nmr', sqltype: sql.Int, value: req.params.id_nmr }
+   ]
+
+   var query = "delete from publikasi where id_nmr = @id_nmr"
+   executeQuery(res, query, model, 1)
+})
+
 ///////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
 ///////////////log indikator satker\\\\\\\\\\\\\\
 
