@@ -602,39 +602,38 @@ app.get("/api/capaian-unit/",function(req, res)
 app.post("/api/capaian-unit/", function(req, res)
 {
    var model = [
-      { name: 'id_satker', sqltype: sql.UniqueIdentifier, value: req.body.id_satker },
+      { name: 'id', sqltype: sql.Int, value: req.body.id },
+      { name: 'id_satker', sqltype: sql.VarChar, value: req.body.id_satker },
       { name: 'id_datadasar', sqltype: sql.Int, value: req.body.id_datadasar },
-      { name: 'capaian', sqltype: sql.Float, value: req.body.capaian }
+      { name: 'capaian', sqltype: sql.VarChar, value: req.body.capaian }
    ]
 
-   var query = "insert into Capaian_Unit values( @id_satker, @id_datadasar, CURRENT_TIMESTAMP, @capaian )"
+   var query = "insert into Capaian_Unit ( id_satker, id_datadasar, waktu, capaian ) values( @id_satker, @id_datadasar, CURRENT_TIMESTAMP, @capaian )"
    executeQuery(res, query, model, 1)
 })
 
 //Update
-app.put("/api/capaian-unit/:id&:id2", function(req, res)
+app.put("/api/capaian-unit/:id", function(req, res)
 {
    var model = [
-      { name: 'id_satker', sqltype: sql.UniqueIdentifier, value: req.body.id_satker },
+      { name: 'id', sqltype: sql.Int, value: req.body.id },
+      { name: 'id_satker', sqltype: sql.VarChar, value: req.body.id_satker },
       { name: 'id_datadasar', sqltype: sql.Int, value: req.body.id_datadasar },
-      { name: 'capaian', sqltype: sql.Float, value: req.body.capaian },
-      { name: 'id', sqltype: sql.UniqueIdentifier, value: req.params.id },
-      { name: 'id2', sqltype: sql.Int, value: req.params.id2 }
+      { name: 'capaian', sqltype: sql.VarChar, value: req.body.capaian }
    ]
 
-   var query = "update Capaian_Unit set id_satker = @id_satker, id_dasar = @id_dasar, capaian = @capaian where id_satker = @id and id_datadasar = @id2"
+   var query = "update Capaian_Unit set id_satker = @id_satker, id_datadasar = @id_datadasar, waktu = CURRENT_TIMESTAMP, capaian = @capaian where id = @id"
    executeQuery(res, query, model, 1)
 })
 
 //Delete
-app.delete("/api/capaian-unit/:id&:id2", function(req, res)
+app.delete("/api/capaian-unit/:id", function(req, res)
 {
    var model = [
-      { name: 'id', sqltype: sql.UniqueIdentifier, value: req.params.id },
-      { name: 'id2', sqltype: sql.Int, value: req.params.id2 }
+      { name: 'id', sqltype: sql.Int, value: req.body.id }
    ]
 
-   var query = "delete from Capaian_Unit where id_satker = @id and id_datadasar = @id2"
+   var query = "delete from Capaian_Unit where id = @id"
    executeQuery(re, query, model, 1)
 })
 
