@@ -698,61 +698,61 @@ app.delete("/api/indikator-satker/:id", function(req, res)
 ///////////////////////\\\\\\\\\\\\\\\\\\\\
 ///////////////////Data Desa\\\\\\\\\\\\\\\\\\ 
 
-//Select
-app.get("/api/datadesa/", function(req, res)
-{
-   var query = "select * from DataDesa"
-   executeQuery(res, query, null, 0)
-})
+// //Select
+// app.get("/api/datadesa/", function(req, res)
+// {
+//    var query = "select * from DataDesa"
+//    executeQuery(res, query, null, 0)
+// })
 
-//Insert
-app.post("/api/datadesa/", function(req, res)
-{
-   var model = [
-      { name: 'id', sqltype: sql.Int, value: req.body.id },
-      { name: 'nama', sqltype: sql.VarChar, value: req.body.nama },
-      { name: 'nik', sqltype: sql.VarChar, value: req.body.nik },
-      { name: 'no_kk', sqltype: sql.VarChar, value: req.body.no_kk },
-      { name: 'tgl_lahir', sqltype: sql.VarChar, value: req.body.tgl_lahir },
-      { name: 'setatus', sqltype: sql.VarChar, value: req.body.setatus },
-      { name: 'pendidikan', sqltype: sql.VarChar, value: req.body.pendidikan },
-      { name: 'pekerjaan', sqltype: sql.VarChar, value: req.body.pekerjaan },
-      { name: 'alamat', sqltype: sql.VarChar, value: req.body.alamat }
-   ]
+// //Insert
+// app.post("/api/datadesa/", function(req, res)
+// {
+//    var model = [
+//       { name: 'id', sqltype: sql.Int, value: req.body.id },
+//       { name: 'nama', sqltype: sql.VarChar, value: req.body.nama },
+//       { name: 'nik', sqltype: sql.VarChar, value: req.body.nik },
+//       { name: 'no_kk', sqltype: sql.VarChar, value: req.body.no_kk },
+//       { name: 'tgl_lahir', sqltype: sql.VarChar, value: req.body.tgl_lahir },
+//       { name: 'setatus', sqltype: sql.VarChar, value: req.body.setatus },
+//       { name: 'pendidikan', sqltype: sql.VarChar, value: req.body.pendidikan },
+//       { name: 'pekerjaan', sqltype: sql.VarChar, value: req.body.pekerjaan },
+//       { name: 'alamat', sqltype: sql.VarChar, value: req.body.alamat }
+//    ]
 
-   var query = "insert into DataDesa ( nama, nik, no_kk, tgl_lahir, setatus, pendidikan, pekerjaan, alamat) values (@nama, @nik, @no_kk, @tgl_lahir, @setatus, @pendidikan, @pekerjaan, @alamat)"
-   executeQuery(res, query, model, 1)
-})
+//    var query = "insert into DataDesa ( nama, nik, no_kk, tgl_lahir, setatus, pendidikan, pekerjaan, alamat) values (@nama, @nik, @no_kk, @tgl_lahir, @setatus, @pendidikan, @pekerjaan, @alamat)"
+//    executeQuery(res, query, model, 1)
+// })
 
-//Update
-app.put("/api/datadesa/:id", function(req, res)
-{
-   var model = [
-      { name: 'id', sqltype: sql.Int, value: req.body.id },
-      { name: 'nama', sqltype: sql.VarChar, value: req.body.nama },
-      { name: 'nik', sqltype: sql.VarChar, value: req.body.nik },
-      { name: 'no_kk', sqltype: sql.VarChar, value: req.body.no_kk },
-      { name: 'tgl_lahir', sqltype: sql.VarChar, value: req.body.tgl_lahir },
-      { name: 'setatus', sqltype: sql.VarChar, value: req.body.setatus },
-      { name: 'pendidikan', sqltype: sql.VarChar, value: req.body.pendidikan },
-      { name: 'pekerjaan', sqltype: sql.VarChar, value: req.body.pekerjaan },
-      { name: 'alamat', sqltype: sql.VarChar, value: req.body.alamat }
-   ]
+// //Update
+// app.put("/api/datadesa/:id", function(req, res)
+// {
+//    var model = [
+//       { name: 'id', sqltype: sql.Int, value: req.body.id },
+//       { name: 'nama', sqltype: sql.VarChar, value: req.body.nama },
+//       { name: 'nik', sqltype: sql.VarChar, value: req.body.nik },
+//       { name: 'no_kk', sqltype: sql.VarChar, value: req.body.no_kk },
+//       { name: 'tgl_lahir', sqltype: sql.VarChar, value: req.body.tgl_lahir },
+//       { name: 'setatus', sqltype: sql.VarChar, value: req.body.setatus },
+//       { name: 'pendidikan', sqltype: sql.VarChar, value: req.body.pendidikan },
+//       { name: 'pekerjaan', sqltype: sql.VarChar, value: req.body.pekerjaan },
+//       { name: 'alamat', sqltype: sql.VarChar, value: req.body.alamat }
+//    ]
 
-   var query = "update DataDesa set nama = @nama, nik = @nik, no_kk = @no_kk, tgl_lahir = @tgl_lahir, setatus = @setatus, pendidikan = @pendidikan, pekerjaan = @pekerjaan, alamat = @alamat where id = @id" 
-   executeQuery(res, query, model, 1)
-})
+//    var query = "update DataDesa set nama = @nama, nik = @nik, no_kk = @no_kk, tgl_lahir = @tgl_lahir, setatus = @setatus, pendidikan = @pendidikan, pekerjaan = @pekerjaan, alamat = @alamat where id = @id" 
+//    executeQuery(res, query, model, 1)
+// })
 
-//Delete
-app.delete("/api/datadesa/:id", function(req, res)
-{
-   var model = [
-      { name: 'id', sqltype: sql.Numeric, value: req.params.id }
-   ]
+// //Delete
+// app.delete("/api/datadesa/:id", function(req, res)
+// {
+//    var model = [
+//       { name: 'id', sqltype: sql.Numeric, value: req.params.id }
+//    ]
 
-   var query = "delete from DataDesa where id = @id"
-   executeQuery(res, query, model, 1)
-})
+//    var query = "delete from DataDesa where id = @id"
+//    executeQuery(res, query, model, 1)
+// })
 
 ///////////////////////\\\\\\\\\\\\\\\\\\\\
 ///////////////////Abmas\\\\\\\\\\\\\\\\\\ 
