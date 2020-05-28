@@ -630,11 +630,11 @@ app.put("/api/capaian-unit/:id", function(req, res)
 app.delete("/api/capaian-unit/:id", function(req, res)
 {
    var model = [
-      { name: 'id', sqltype: sql.Int, value: req.body.id }
+      { name: 'id', sqltype: sql.Int, value: req.params.id }
    ]
 
    var query = "delete from Capaian_Unit where id = @id"
-   executeQuery(re, query, model, 1)
+   executeQuery(res, query, model, 1)
 })
 
 ///////////////////////\\\\\\\\\\\\\\\\\\\\\\\
